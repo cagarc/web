@@ -1,7 +1,8 @@
 # web
-pagina de cliente
-Estimado descargar el fuente del proyecto de angular 
-comado a ejecutar en consola de windows 
+pagina de cliente,
+
+Estimado descargar el fuente del proyecto de angular, 
+utilice los siguiente comando a ejecutar en consola de windows 
  - npm install -g @angular/cli
  - npm install
  - npm start
