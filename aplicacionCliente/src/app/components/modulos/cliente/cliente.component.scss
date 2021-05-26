@@ -1,0 +1,38 @@
+.header-app {
+  text-align: center;
+ // color: white;
+}
+
+.Buttons-lists {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.myButton {
+  padding: 1rem;
+  margin: 1rem;
+  width: 30%;
+}
+
+.myFrom {
+  background-color: white;
+  width: 50%;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: initial;
+  color: black;
+  border-radius: 2%;
+  @media screen and(max-width:800px) {
+    width: 100%;
+  }
+}
+
+table,
+mat-form-field {
+  width: 100%;
+}
+.btn-send {
+  width: 100%;
+}

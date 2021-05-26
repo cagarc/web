@@ -1,0 +1,114 @@
+<div class="Buttons-lists">
+  <form class="myFrom" novalidate [formGroup]="this.fromCliente">
+    <table cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="Nombre" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Apellido" formControlName="Apellido" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="fecha" formControlName="fecha" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="fecha"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #fecha></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button type="button" (click)="ingresoArticulo()">Ingresar Articulo</button>
+    <button type="button" (click)="procesar()">Procesar</button>
+  </form>
+
+</div>
+<div class="overlay active" id="overlay" [hidden]="!submitted">
+  <div class="Buttons-lists">
+
+    <form class="myFrom" novalidate [formGroup]="this.fromArticulo">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="precioUnitario"
+                formControlName="precioUnitario"
+                type="number"  min="0" step="5"  placeholder="00.00"
+                (keypress)="numericOnly($event)"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="codigoArticulo"
+                formControlName="codigoArticulo"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="nombreArticulo"
+                formControlName="nombreArticulo"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <button
+        type="button"
+        mat-raised-button
+        class="btn-send"
+        (click)="agregarArticulo()"
+      >
+        Guarda
+      </button>
+    </form>
+  </div>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Precio Articulo">
+    <th mat-header-cell *matHeaderCellDef>Precio Articulo</th>
+    <td mat-cell *matCellDef="let element">{{ element.precioUnitario }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Codigo Articulo">
+    <th mat-header-cell *matHeaderCellDef>codigo Articulo</th>
+    <td mat-cell *matCellDef="let element">{{ element.codigoArticulo }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Nombre Articulo">
+    <th mat-header-cell *matHeaderCellDef>nombre Articulo</th>
+    <td mat-cell *matCellDef="let element">{{ element.nombreArticulo }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

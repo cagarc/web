@@ -1,0 +1,158 @@
+<div class="Buttons-lists">
+  <form class="myFrom" novalidate [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <table cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="identificacion"
+              formControlName="identificacion"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="celular" formControlName="celular" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="direccion"
+              formControlName="direccion"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="email" formControlName="email" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="edad" formControlName="edad" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Fecha de Nacimineto"
+              formControlName="fecNacimiento"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="nombre" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Apellido" formControlName="apellido" />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Genero" />
+            <mat-label>Genero</mat-label>
+            <mat-select formControlName="genero">
+              <mat-option value="Masculino">Masculino</mat-option>
+              <mat-option value="Femenino">Femenino</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>
+          <button mat-raised-button class="btn-send">Guarda</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="identificacion">
+    <th mat-header-cell *matHeaderCellDef>identificacion</th>
+    <td mat-cell *matCellDef="let element">{{ element.identificacion }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="celular">
+    <th mat-header-cell *matHeaderCellDef>celular</th>
+    <td mat-cell *matCellDef="let element">{{ element.celular }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="direccion">
+    <th mat-header-cell *matHeaderCellDef>direccion</th>
+    <td mat-cell *matCellDef="let element">{{ element.direccion }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="edad">
+    <th mat-header-cell *matHeaderCellDef>edad</th>
+    <td mat-cell *matCellDef="let element">{{ element.edad }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecNacimiento">
+    <th mat-header-cell *matHeaderCellDef>fecNacimiento</th>
+    <td mat-cell *matCellDef="let element">{{ element.fecNacimiento }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef>nombre</th>
+    <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="apellido">
+    <th mat-header-cell *matHeaderCellDef>apellido</th>
+    <td mat-cell *matCellDef="let element">{{ element.apellido }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="genero">
+    <th mat-header-cell *matHeaderCellDef>genero</th>
+    <td mat-cell *matCellDef="let element">{{ element.genero }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button type="button">
+        <mat-icon (click)="eliminarCliente(element)">delete</mat-icon>
+      </button>
+      <!--  <mat-icon (click)="editarCliente(element)">edit</mat-icon>-->
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
