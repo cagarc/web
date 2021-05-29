@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { Cliente } from '../../../model/cliente';
 
 import { ClienteService } from '../../../Service/Entidad/cliente/cliente.service';
@@ -48,6 +47,10 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit(): void {}
 
+
+  ngAfterContentInit() {
+    this.dataSource.sort = this.sort;
+  }
   onSubmit() {
     this.clienteService.ingresoCliente(this.myForm.value).subscribe(
       (result) => {
@@ -68,7 +71,7 @@ export class ClienteComponent implements OnInit {
       console.log(result);
     });
 
-   // this.dataSource.data = this.clienteService.;
+   this.dataSource.data.reverse();
 
   }
   selected = new FormControl('valid', [

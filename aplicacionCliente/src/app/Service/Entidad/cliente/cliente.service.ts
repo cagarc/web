@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/internal/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Cliente } from '../../../model/cliente';
 
 @Injectable({
   providedIn: 'root',
@@ -27,11 +28,24 @@ export class ClienteService {
     return throwError(codigo);
   }
 
-  ingresoCliente(cliente: any) {
+  ingresoCliente(cliente: Cliente) {
+    let clie: Cliente = {
+      identificacion: cliente.identificacion,
+      celular: '',
+      genero: cliente.genero,
+      direccion: cliente.direccion,
+      edad: cliente.edad,
+      email: cliente.email,
+      fechaNacimiento: cliente.fechaNacimiento,
+      nombre: cliente.nombre,
+      apellido: cliente.apellido
+    };
+
+    console.log(clie);
     let ruta = 'http://localhost:7090/api/es/cliente';
     console.log('crear: ' + ruta);
     return this.httpEntidad
-      .post<any>(ruta, cliente)
+      .post<any>(ruta, clie)
       .pipe(catchError(this.handleError));
   }
 

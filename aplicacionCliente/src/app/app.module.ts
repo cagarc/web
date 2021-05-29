@@ -14,6 +14,7 @@ import { AutenticacionComponent } from './components/autenticacion/autenticacion
 import { PantallaInicioComponent } from './components/pantalla-inicio/pantalla-inicio.component';
 import { ClienteComponent } from './components/modulos/cliente/cliente.component';
 import { OrdenComponent } from './components/modulos/orden/orden.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrdenComponent } from './components/modulos/orden/orden.component';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
 
 

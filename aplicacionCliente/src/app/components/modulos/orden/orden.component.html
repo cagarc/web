@@ -4,6 +4,13 @@
       <tr>
         <td>
           <mat-form-field>
+            <input matInput placeholder="Identificacion" formControlName="identificacion" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
             <input matInput placeholder="Nombre" formControlName="Nombre" />
           </mat-form-field>
         </td>
@@ -32,11 +39,9 @@
     <button type="button" (click)="ingresoArticulo()">Ingresar Articulo</button>
     <button type="button" (click)="procesar()">Procesar</button>
   </form>
-
 </div>
 <div class="overlay active" id="overlay" [hidden]="!submitted">
   <div class="Buttons-lists">
-
     <form class="myFrom" novalidate [formGroup]="this.fromArticulo">
       <table>
         <tr>
@@ -44,9 +49,11 @@
             <mat-form-field>
               <input
                 matInput
-                placeholder="precioUnitario"
-                formControlName="precioUnitario"
-                type="number"  min="0" step="5"  placeholder="00.00"
+                placeholder="unidad"
+                formControlName="unidadArticulo"
+                type="number"
+                min="0"
+                step="5"
                 (keypress)="numericOnly($event)"
               />
             </mat-form-field>
@@ -55,22 +62,19 @@
         <tr>
           <td>
             <mat-form-field>
-              <input
-                matInput
-                placeholder="codigoArticulo"
-                formControlName="codigoArticulo"
-              />
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field>
-              <input
-                matInput
-                placeholder="nombreArticulo"
+              <mat-label>Articulo</mat-label>
+              <mat-select
                 formControlName="nombreArticulo"
-              />
+                name="nombreArticulo"
+              >
+                <mat-option
+                  *ngFor="let food of listaArticulo"
+                  [value]="food"
+                >
+                  {{ food.nombre }}
+                </mat-option>
+              </mat-select>
+
             </mat-form-field>
           </td>
         </tr>
@@ -94,7 +98,7 @@
   <!-- Position Column -->
   <ng-container matColumnDef="Precio Articulo">
     <th mat-header-cell *matHeaderCellDef>Precio Articulo</th>
-    <td mat-cell *matCellDef="let element">{{ element.precioUnitario }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.precio }}</td>
   </ng-container>
 
   <!-- Name Column -->
@@ -107,6 +111,11 @@
   <ng-container matColumnDef="Nombre Articulo">
     <th mat-header-cell *matHeaderCellDef>nombre Articulo</th>
     <td mat-cell *matCellDef="let element">{{ element.nombreArticulo }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="unidad Articulo">
+    <th mat-header-cell *matHeaderCellDef>Unidad Articulo</th>
+    <td mat-cell *matCellDef="let element">{{ element.unidadArticulo }}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
