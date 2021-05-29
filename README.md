@@ -12,3 +12,23 @@ antes de ingresar a una opcion de la pagina desplegar dos servicio de entidad en
 repor: https://github.com/cagarc/servicios.git
 para despliegue de los servicio debe tener una base postgresql
 con username:postgres ,password: root
+
+Estimada se agrego un servicio mas de articulo
+con una capacidad de consulta y actualizar 
+utilice la capacida de actualizar par ingresar los datos de pruebas 
+[
+ {
+    "id": 1,
+    "nombre": "Cola",
+    "cantidad": 5,
+    "precio": 1,
+    "stop": 100
+  },
+  {
+    "id": 2,
+    "nombre": "Galleta",
+    "cantidad": 5,
+    "precio": 1.5,
+    "stop": 34
+  }
+]
